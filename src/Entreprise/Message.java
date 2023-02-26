@@ -3,14 +3,49 @@ package Entreprise;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe methier de gestion des messages
+ *
+ * @author Salma
+ * @version 1.0
+ * @see Infos
+ */
 public class Message {
-
+    /**
+     * id unique du message
+     */
     private int id;
+    /**
+     * objet du message
+     */
     private String objet;
+    /**
+     * contenu du message
+     */
     private String contenu;
+    /**
+     * dateEnvoi du message
+     */
     private String dateEnvoi;
+    /**
+     * listInfos des message
+     */
     private List<Infos> infos=new ArrayList<>();
 
+    /**
+     * constrcuteur par defaut
+     */
+    public Message() {
+    }
+
+    /**
+     * constrcuteur parametre de base
+     *
+     * @param id id unique du message
+     * @param objet objet du message
+     * @param contenu contenu du message
+     * @param dateEnvoi dateEnvoi du message
+     */
     public Message(int id, String objet, String contenu, String dateEnvoi) {
         this.id = id;
         this.objet = objet;
@@ -18,6 +53,15 @@ public class Message {
         this.dateEnvoi = dateEnvoi;
     }
 
+    /**
+     * constrcuteur parametre complet
+     *
+     * @param id id unique du message
+     * @param objet objet du message
+     * @param contenu contenu du message
+     * @param dateEnvoi dateEnvoi du message
+     * @param infos list info du message
+     */
     public Message(int id, String objet, String contenu, String dateEnvoi, List<Infos> infos) {
         this.id = id;
         this.objet = objet;
@@ -26,43 +70,98 @@ public class Message {
         this.infos = infos;
     }
 
+    /**
+     * getter id
+     * @return id unique du message
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * setter id
+     * @param id id unique du message
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * getter objet du message
+     * @return objet du message
+     */
     public String getObjet() {
         return objet;
     }
 
+    /**
+     * setter objet message
+     * @param objet objet du message
+     */
     public void setObjet(String objet) {
         this.objet = objet;
     }
 
+    /**
+     * getter contenu du message
+     * @return contenu du message
+     */
     public String getContenu() {
         return contenu;
     }
 
+    /**
+     * setter contenu du message
+     * @param contenu contenu du message
+     */
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
 
+    /**
+     * getter dateEnvoi du message
+     * @return dateEnvoi du message
+     */
     public String getDateEnvoi() {
         return dateEnvoi;
     }
 
+    /**
+     * setter dateEnvoi du message
+     * @param dateEnvoi dateEnvoi du message
+     */
     public void setDateEnvoi(String dateEnvoi) {
         this.dateEnvoi = dateEnvoi;
     }
 
+    /**
+     * getter listInfo d'un message
+     * @return listInfos d'un message
+     */
     public List<Infos> getInfos() {
         return infos;
     }
 
+    /**
+     * setter listInfo d'un message
+     * @param infos lisInfo d'un message
+     */
     public void setInfos(List<Infos> infos) {
         this.infos = infos;
+    }
+
+    /**
+     * methode toString
+     * @return information completes
+     */
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", objet='" + objet + '\'' +
+                ", contenu='" + contenu + '\'' +
+                ", dateEnvoi='" + dateEnvoi + '\'' +
+                ", infos=" + infos +
+                '}';
     }
 }
