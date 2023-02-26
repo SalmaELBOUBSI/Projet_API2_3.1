@@ -14,11 +14,7 @@ public class Infos {
     /**
      * id_employe recepteur du message
      */
-    private Employe id_emp;
-    /**
-     * id_message envoye
-     */
-    private Message id_msg;
+    private Employe recepteur;
 
     /**
      * date de lecture du message
@@ -34,13 +30,11 @@ public class Infos {
     /**
      * constrcuteur parametre complet
      *
-     * @param id_emp id_employe recepteur
-     * @param id_msg id_message emit
+     * @param recepteur recepteur du message
      * @param dateLecture date de lecture du message
      */
-    public Infos(Employe id_emp, Message id_msg, LocalDate dateLecture) {
-        this.id_emp = id_emp;
-        this.id_msg = id_msg;
+    public Infos(Employe recepteur, LocalDate dateLecture) {
+        this.recepteur = recepteur;
         this.dateLecture = dateLecture;
     }
 
@@ -61,35 +55,19 @@ public class Infos {
     }
 
     /**
-     * getter id_emp recepteur
-     * @return id_emp recepteur du message
+     * getter  recepteur
+     * @return recepteur recepteur du message
      */
-    public Employe getId_emp() {
-        return id_emp;
+    public Employe getRecepteur() {
+        return recepteur;
     }
 
     /**
-     * setter id_emp recpteur
-     * @param id_emp recepteur du message
+     * setter recepteur recpteur
+     * @param recepteur recepteur du message
      */
-    public void setId_emp(Employe id_emp) {
-        this.id_emp = id_emp;
-    }
-
-    /**
-     * getter id_msg emit
-     * @return id_msg eemit
-     */
-    public Message getId_msg() {
-        return id_msg;
-    }
-
-    /**
-     * setter id_msg emi
-     * @param id_msg emit
-     */
-    public void setId_msg(Message id_msg) {
-        this.id_msg = id_msg;
+    public void setRecepteur(Employe recepteur) {
+        this.recepteur = recepteur;
     }
 
     /**
@@ -99,8 +77,7 @@ public class Infos {
     @Override
     public String toString() {
         return "Infos{" +
-                "id_emp=" + id_emp +
-                ", id_msg=" + id_msg +
+                "recepteur=" + recepteur +
                 ", dateLecture=" + dateLecture +
                 '}';
     }

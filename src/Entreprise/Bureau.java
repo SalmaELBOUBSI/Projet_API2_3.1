@@ -24,10 +24,7 @@ public class Bureau {
      * Numero de telephone du bureau
      */
     private String tel;
-    /**
-     * Ensembble de tout les employés du bureau
-     */
-    private List<Employe> employes = new ArrayList<>();
+
 
     /**
      * constructeur par defaut
@@ -50,21 +47,6 @@ public class Bureau {
         this.tel = tel;
     }
 
-    /**
-     * constructeur parametre complet
-     *
-     * @param id identifiant unique du bureau,affecte par la base de donnees
-     * @param sigle sigle du bureau
-     * @param tel numero de telephone du bureau
-     * @param employes liste des employes du bureau
-     */
-
-    public Bureau(int id, String sigle, String tel, List<Employe> employes) {
-        this.id = id;
-        this.sigle = sigle;
-        this.tel = tel;
-        this.employes = employes;
-    }
 
     /**
      *getter id
@@ -114,21 +96,6 @@ public class Bureau {
         this.tel = tel;
     }
 
-    /**
-     * getter Employe
-     * @return liste des employes du bureau
-     */
-    public List<Employe> getEmployes() {
-        return employes;
-    }
-
-    /**
-     * setter Employe
-     * @param employes liste des employes du bureau
-     */
-    public void setEmployes(List<Employe> employes) {
-        this.employes = employes;
-    }
 
     /**
      * methode d'egalite entre deux bureau base sur leur sigle
@@ -161,7 +128,6 @@ public class Bureau {
                 "id=" + id +
                 ", sigle='" + sigle + '\'' +
                 ", tel='" + tel + '\'' +
-                ", employes=" + employes +
                 '}';
     }
 }

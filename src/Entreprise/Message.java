@@ -27,6 +27,12 @@ public class Message {
      * dateEnvoi du message
      */
     private String dateEnvoi;
+
+
+    /**
+     * emetteur des message
+     */
+    private Employe emetteur;
     /**
      * listInfos des message
      */
@@ -60,13 +66,15 @@ public class Message {
      * @param objet objet du message
      * @param contenu contenu du message
      * @param dateEnvoi dateEnvoi du message
+     * @param emetteur emetteur des message
      * @param infos list info du message
      */
-    public Message(int id, String objet, String contenu, String dateEnvoi, List<Infos> infos) {
+    public Message(int id, String objet, String contenu, String dateEnvoi, Employe emetteur, List<Infos> infos) {
         this.id = id;
         this.objet = objet;
         this.contenu = contenu;
         this.dateEnvoi = dateEnvoi;
+        this.emetteur = emetteur;
         this.infos = infos;
     }
 
@@ -135,6 +143,22 @@ public class Message {
     }
 
     /**
+     * getter emetteur de message
+     * @return emetteur des message
+     */
+    public Employe getEmetteur() {
+        return emetteur;
+    }
+
+    /**
+     * setter emetteur
+     * @param emetteur emetteur de message
+     */
+    public void setEmetteur(Employe emetteur) {
+        this.emetteur = emetteur;
+    }
+
+    /**
      * getter listInfo d'un message
      * @return listInfos d'un message
      */
@@ -161,6 +185,7 @@ public class Message {
                 ", objet='" + objet + '\'' +
                 ", contenu='" + contenu + '\'' +
                 ", dateEnvoi='" + dateEnvoi + '\'' +
+                ", emetteur=" + emetteur +
                 ", infos=" + infos +
                 '}';
     }
