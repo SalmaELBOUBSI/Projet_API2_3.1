@@ -1,5 +1,6 @@
 package Entreprise;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Message {
     /**
      * dateEnvoi du message
      */
-    private String dateEnvoi;
+    private LocalDate dateEnvoi;
 
 
     /**
@@ -52,11 +53,19 @@ public class Message {
      * @param contenu contenu du message
      * @param dateEnvoi dateEnvoi du message
      */
-    public Message(int id, String objet, String contenu, String dateEnvoi) {
+    public Message(int id, String objet, String contenu, LocalDate dateEnvoi) {
         this.id = id;
         this.objet = objet;
         this.contenu = contenu;
         this.dateEnvoi = dateEnvoi;
+    }
+
+    public Message(int id, String objet, String contenu, LocalDate dateEnvoi, Employe emetteur) {
+        this.id = id;
+        this.objet = objet;
+        this.contenu = contenu;
+        this.dateEnvoi = dateEnvoi;
+        this.emetteur = emetteur;
     }
 
     /**
@@ -69,7 +78,7 @@ public class Message {
      * @param emetteur emetteur des message
      * @param infos list info du message
      */
-    public Message(int id, String objet, String contenu, String dateEnvoi, Employe emetteur, List<Infos> infos) {
+    public Message(int id, String objet, String contenu, LocalDate dateEnvoi, Employe emetteur, List<Infos> infos) {
         this.id = id;
         this.objet = objet;
         this.contenu = contenu;
@@ -77,6 +86,8 @@ public class Message {
         this.emetteur = emetteur;
         this.infos = infos;
     }
+
+
 
     /**
      * getter id
@@ -130,7 +141,7 @@ public class Message {
      * getter dateEnvoi du message
      * @return dateEnvoi du message
      */
-    public String getDateEnvoi() {
+    public LocalDate getDateEnvoi() {
         return dateEnvoi;
     }
 
@@ -138,7 +149,7 @@ public class Message {
      * setter dateEnvoi du message
      * @param dateEnvoi dateEnvoi du message
      */
-    public void setDateEnvoi(String dateEnvoi) {
+    public void setDateEnvoi(LocalDate dateEnvoi) {
         this.dateEnvoi = dateEnvoi;
     }
 

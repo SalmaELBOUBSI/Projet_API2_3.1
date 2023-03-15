@@ -60,6 +60,14 @@ public class Employe {
         this.prenom = prenom;
     }
 
+    public Employe(int id, String mail, String nom, String prenom, Bureau bureau) {
+        this.id = id;
+        this.mail = mail;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.bureau = bureau;
+    }
+
     /**
      * constructeur parametre complet
      * @param id identifiant de l'employe ,affecte par la bd

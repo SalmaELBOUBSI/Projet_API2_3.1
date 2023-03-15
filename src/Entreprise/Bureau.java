@@ -32,6 +32,10 @@ public class Bureau {
     public Bureau() {
     }
 
+    public Bureau(int id) {
+        this.id = id;
+    }
+
     /**
      * constructeur parametre de base
      *
