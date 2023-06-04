@@ -45,6 +45,10 @@ public class Employe {
     public Employe() {
     }
 
+    public Employe(int id) {
+        this.id = id;
+    }
+
     /**
      * constructeur parametre de base
      *
@@ -53,6 +57,7 @@ public class Employe {
      * @param nom nom de l'employe
      * @param prenom prenom de l'employe
      */
+
     public Employe(int id, String mail, String nom, String prenom) {
         this.id = id;
         this.mail = mail;
@@ -88,6 +93,7 @@ public class Employe {
 
     /**
      * getter id de l'employe
+     *
      * @return id de l'employe
      */
     public int getId() {
@@ -152,6 +158,7 @@ public class Employe {
 
     /**
      * getter Bureau ded l'employer
+     *
      * @return bureau de l'employe
      */
     public Bureau getBureau() {
@@ -217,5 +224,40 @@ public class Employe {
                 ", bureau=" + bureau +
                 ", messages=" + messages +
                 '}';
+    }
+
+    public void addMessage(Message msg){
+        messages.add(msg);
+        msg.setEmetteur(this);
+    }
+
+    public void supMessage(Message msg){
+        messages.remove(msg);
+        msg.setEmetteur(null);
+    }
+
+    public List<Message> message_envoye(){
+        List<Message> lmsg = new ArrayList<>();
+        for(Message msg : messages){
+            if(msg.getDateEnvoi()!= null) lmsg.add(msg);
+        }
+        return lmsg;
+    }
+
+    public List<Message> message_recu(){
+        List<Message> lmsg = new ArrayList<>();
+        for(Message msg : messages){
+
+        }
+        return lmsg;
+    }
+
+    public List<Message> message_non_lu(){
+        List<Message> lmsg = new ArrayList<>();
+        for(Message msg : messages){
+            //TODO mettre la date de lecture
+            if(msg.getInfos() == null) lmsg.add(msg);
+        }
+        return lmsg;
     }
 }

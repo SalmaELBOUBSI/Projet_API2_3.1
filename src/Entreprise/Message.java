@@ -53,6 +53,8 @@ public class Message {
      * @param contenu contenu du message
      * @param dateEnvoi dateEnvoi du message
      */
+
+
     public Message(int id, String objet, String contenu, LocalDate dateEnvoi) {
         this.id = id;
         this.objet = objet;
@@ -88,6 +90,13 @@ public class Message {
     }
 
 
+
+    public Message(int id, String objet, String contenu, Employe emetteur) {
+        this.id = id;
+        this.objet = objet;
+        this.contenu = contenu;
+        this.emetteur = emetteur;
+    }
 
     /**
      * getter id

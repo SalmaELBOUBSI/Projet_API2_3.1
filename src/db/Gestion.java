@@ -5,13 +5,23 @@ import Entreprise.Employe;
 import Entreprise.Message;
 import myconnections.DBConnection;
 
-import java.awt.*;
-import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Gestion {
+    //private static final Logger logger = LogManager.getLogger(Gestion.class);
+
+    public Gestion(){
+        dbConnect = DBConnection.getConnection();
+        if (dbConnect == null) {
+            System.err.println("erreur de connexion");
+            //logger.error("erreur de connexion");
+            System.exit(1);
+        }
+        System.out.println("connexion établie");
+        //logger.info("connexion établie");
+    }
 
     public static void main(String[] args) {
 
