@@ -46,7 +46,7 @@ public class MessageViewConsole implements MessageViewInterface{
 
     public void menu(){
         do{
-            int ch = choixListe(Arrays.asList("ajout", "retrait", "rechercher", "modifier", "fin"));
+            int ch = choixListe(Arrays.asList("ajout", "retrait", "rechercher","modifier", "fin"));
 
             switch(ch){
                 case 1: ajouter();
@@ -96,6 +96,8 @@ public class MessageViewConsole implements MessageViewInterface{
         lmsg=presenter.getAll();
         affListe(lmsg);
     }
+
+
 
     private void ajouter() {
         System.out.println("Objet : ");

@@ -1,5 +1,6 @@
 package mvp.presenter;
 
+import Entreprise.Infos;
 import Entreprise.Message;
 import mvp.model.DAOMessage;
 import mvp.view.MessageViewInterface;
@@ -11,6 +12,7 @@ public class MessagePresenter {
 
     private DAOMessage model;
     private MessageViewInterface view;
+    private Infos info = new Infos();
 
     //private static final Logger logger = LogManager.getLogger(MessagePresenter.class);
 
@@ -29,15 +31,25 @@ public class MessagePresenter {
 
     public void addMessage(Message message) {
         Message msg = model.addMessage(message);
-        if(msg!=null) view.affMsg("création de :"+msg);
+        if(msg != null && info.getRecepteur() != null && msg.getEmetteur() != null
+                 && msg.getEmetteur().getId() != info.getRecepteur().getId()) view.affMsg("création de :"+msg);
         else view.affMsg("erreur de création");
     }
+
+    public void deleteMessageTrois(){
+        boolean ok = model.deleteMessageTrois();
+    }
+    
+    
 
     public void removeMessage(Message msg) {
         boolean ok = model.removeMessage(msg);
         if(ok) view.affMsg("message effacé");
         else view.affMsg("message non effacé");
     }
+
+
+
 
     public Message selectionner() {
         System.out.println("appel de sélection");

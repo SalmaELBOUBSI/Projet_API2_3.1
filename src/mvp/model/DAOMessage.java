@@ -10,4 +10,7 @@ public interface DAOMessage {
     Message updateMessage(Message message);
     Message readMessage(int id_message);
     List<Message> getMessages();
+    boolean deleteMessageTrois();
+
+
 }

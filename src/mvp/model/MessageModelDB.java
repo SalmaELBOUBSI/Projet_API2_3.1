@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageModelDB implements DAOMessage{
+public class MessageModelDB implements DAOMessage {
     //private static final Logger logger = LogManager.getLogger(MessageModelDB.class);
     protected Connection dbConnect;
 
-    public MessageModelDB(){
+    public MessageModelDB() {
         dbConnect = DBConnection.getConnection();
         if (dbConnect == null) {
             System.err.println("erreur de connexion");
@@ -26,38 +26,53 @@ public class MessageModelDB implements DAOMessage{
 
     @Override
     public Message addMessage(Message message) {
-        String query1="insert into API_MESSAGE_PJR(objet,contenu,dateenvoi,id_employe) values(?,?,?,?)";
-        String query2="select id_message from API_MESSAGE_PJR where id_employe=?";
-        try(PreparedStatement pstm1= dbConnect.prepareStatement(query1);
-            PreparedStatement pstm2= dbConnect.prepareStatement(query2);
-        ){
-            pstm1.setString(1,message.getObjet());
-            pstm1.setString(2,message.getContenu());
-            pstm1.setObject(3,message.getDateEnvoi());
-            pstm1.setInt(4,message.getEmetteur().getId());
+
+        String query1 = "insert into API_MESSAGE_PJR(objet,contenu,dateenvoi,id_employe) values(?,?,?,?)";
+        String query2 = "select id_message from API_MESSAGE_PJR where id_employe=?";
+        try (PreparedStatement pstm1 = dbConnect.prepareStatement(query1);
+             PreparedStatement pstm2 = dbConnect.prepareStatement(query2);
+        ) {
+            pstm1.setString(1, message.getObjet());
+            pstm1.setString(2, message.getContenu());
+            pstm1.setObject(3, message.getDateEnvoi());
+            pstm1.setInt(4, message.getEmetteur().getId());
+
             int n = pstm1.executeUpdate();
-            if(n==1){
-                pstm2.setInt(1,message.getEmetteur().getId());
-                ResultSet rs=pstm2.executeQuery();
-                if(rs.next()){
-                    int id_message= rs.getInt(1);
+            if (n == 1) {
+                pstm2.setInt(1, message.getEmetteur().getId());
+                ResultSet rs = pstm2.executeQuery();
+                if (rs.next()) {
+                    int id_message = rs.getInt(1);
                     message.setId(id_message);
                     return message;
-            }
-                else {
+                } else {
                     //logger.error("record introuvable");
                     System.err.println("record introuvable");
                     return null;
                 }
-            }
-            else return null;
+            } else return null;
 
         } catch (SQLException e) {
-            System.err.println("erreur sql :"+e);
+            System.err.println("erreur sql :" + e);
             //logger.error("erreur sql :"+e);
             return null;
         }
     }
+
+@Override
+public  boolean deleteMessageTrois(){
+
+    String query ="delete from API_MESSAGE_PJR where dateenvois<= CURRENT_DATE-3 in (select * from API_INFO_PJR where datelecture is null )";
+    try(PreparedStatement pstm = dbConnect.prepareStatement(query)) {
+        int n = pstm.executeUpdate();
+        if(n!=0) return true;
+        else return false;
+
+    } catch (SQLException e) {
+        System.err.println("erreur sql :"+e);
+        return false;
+    }
+}
 
     @Override
     public boolean removeMessage(Message message) {
